@@ -7,7 +7,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def index():
-    return "Hello Niggers!"
+    return "You aren't supposed to be here. Go away :("
 
 def create_app():
     return app
