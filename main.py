@@ -28,7 +28,7 @@ def delta():
         page.wait_for_selector("button:text('Continue')")
         page.get_by_role("button", name="Continue").click(force=True)
         page.wait_for_url(re.compile(r"^https://linkvertise\.com"))
-        url = page.url()
+        url = page.url
 
         page.goto("https://adlinkbypass.com/")
         page.get_by_role("textbox").fill(url)
