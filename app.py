@@ -9,9 +9,6 @@ app = Flask(__name__)
 def index():
     return "You aren't supposed to be here. Go away :("
 
-def create_app():
-    return app
-
 @app.route("/bypasskey/system/delta", methods=["GET"])
 def delta():
     with sync_playwright() as p:
@@ -20,7 +17,7 @@ def delta():
 
         link = request.args.get("link")
         if not link or "id=" not in link:
-            return jsonify({"status": "⚠️Error", "message": "MethodNotAllowed"}), 400
+            return jsonify({"status": "Error", "message": "MethodNotAllowed"}), 400
 
         id = link.split("id=")[1]
 
@@ -53,5 +50,4 @@ def delta():
         return jsonify({"status": "success", "key": data["key"]}), 200
         
 if __name__ == "__main__":
-    from waitress import serve
-    serve(app, host="0.0.0.0", port=8080)
+    app.run(debug=True, host="0.0.0.0", port="8080")
